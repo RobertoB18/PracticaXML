@@ -1,0 +1,43 @@
+<h2>Inventario</h2>
+
+<!-- Tabla para mostrar los productos -->
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos$ | async">
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.precio | currency }}</td>
+          <td><img [src]="producto.imagen" alt="Imagen del producto" width="50"></td>
+          <td>
+            <button (click)="eliminarProduct(producto.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    
+</table>
+  
+  <!-- Botón para descargar el inventario en XML -->
+  <button (click)="descargarXML()">Descargar XML</button>
+
+<h2>Nuevo producto</h2>
+<form (submit)="agregarProduct()">
+    <input type="number" name="id" placeholder="" id="id" [(ngModel)] = "nuevoProducto.id"/>
+    <br>
+    <br>
+    <input type="text" name="nombre" placeholder="Nombre" id="nombre" [(ngModel)] = "nuevoProducto.nombre"/>
+    <br>
+    <br>
+    <input type="number" name="precio" placeholder="Precio" id="precio" [(ngModel)] = "nuevoProducto.precio"/>
+    <br>
+    <br>
+    <button type="submit" >Crear nuevo producto</button>
+</form>

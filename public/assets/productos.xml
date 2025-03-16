@@ -1,0 +1,18 @@
+<producto>
+    <id>1</id>
+        <nombre>Mouse</nombre>
+        <precio>500</precio>
+        <imagen>/assets/imagen.jpg</imagen>
+</producto>
+<producto>
+    <id>2</id>
+        <nombre>Tecado</nombre>
+        <precio>1200</precio>
+        <imagen>/assets/imagen.jpg</imagen>
+</producto>
+<producto>
+    <id>3</id>
+        <nombre>Pantalla</nombre>
+        <precio>2500</precio>
+        <imagen>/assets/imagen.jpg</imagen>
+</producto>

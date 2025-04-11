@@ -10,27 +10,14 @@ import { Observable, of } from 'rxjs';
 })
 export class ProductoService {
 
-  private  xmlUrl = "assets/productos.xml"
+  //private  xmlUrl = "assets/productos.xml"
+  private apiUrl = "http://localhost:3000/api/productos"; // URL de la API REST
   constructor(private http:HttpClient){
   }
 
   obtenerProducto(): Observable<any[]> {
-    const xmlGuardado = localStorage.getItem('inventarioXML');
-    if (xmlGuardado) {
-      return of(this.parseXML(xmlGuardado));
-    } else {
-      return this.http.get(this.xmlUrl, { responseType: "text" }).pipe(
-        map(xml => {
-          const productos = this.parseXML(xml);
-          localStorage.setItem('inventarioXML', xml); // Guarda en localStorage
-          return productos;
-        }),
-        catchError(error => {
-          console.error("Error cargando el XML:", error);
-          return of([]); // Si hay error, retorna un array vacío
-        })
-      );
-    }
+    
+   return this.http.get<any[]>(this.apiUrl);
   }
 
   private parseXML(xml: string): any[] {

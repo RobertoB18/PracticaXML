@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ProductoComponent implements OnInit {
-  producto !: Observable<Producto[]>;
+  producto: Producto[] = []; // Cambiado a Producto[] para reflejar el tipo correcto
   constructor(
     private productoService : ProductoService, 
     private carritoService: CarritoService,
@@ -22,7 +22,9 @@ export class ProductoComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-  this.producto = this.productoService.obtenerProducto();
+  this.productoService.obtenerProducto().subscribe(data => {
+    this.producto = data as any[];
+  })
   }
   agregarCarrito(producto: any){
     

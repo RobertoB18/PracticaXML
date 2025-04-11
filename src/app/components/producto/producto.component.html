@@ -1,7 +1,7 @@
 <h2>Catalogo de producto</h2>
 
 <div class="productos">
-    <div *ngFor="let producto of producto | async" class="producto">
+    <div *ngFor="let producto of producto" class="producto">
         <img src="{{producto.imagen}}" alt="Imagen shida">
         <h3>{{producto.nombre}}</h3>
         <p>Precio: ${{producto.precio}}</p>

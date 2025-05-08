@@ -7,14 +7,19 @@ import { Producto } from '../models/producto';
 export class CarritoService {
 
   private card : Producto[] = [];
-  agregarProducto(producto: Producto){
+  
+  agregarProducto(producto: Producto) {
     const existente = this.card.find(p => p.id === producto.id);
+  
+    const cantidad = producto.cantidad ?? 1; // Si no viene definida, usamos 1 por defecto
+  
     if (existente) {
-      existente.cantidad += producto.cantidad;
+      existente.cantidad += cantidad;
     } else {
-      this.card.push(producto);
+      this.card.push({ ...producto, cantidad }); // Aseguramos que 'cantidad' esté presente
     }
   }
+  
 
   obtenerProductos(){
     return this.card

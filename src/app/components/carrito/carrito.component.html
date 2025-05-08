@@ -7,5 +7,9 @@
         </li>
         
     </ul>
+    <p>Total {{total()}}</p>
     <button (click)="generarXML()">Pagar</button>
+    
+    <app-paypal-button [total]="total()"></app-paypal-button>
+
 </div>
